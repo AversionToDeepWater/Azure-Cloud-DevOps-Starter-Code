@@ -2,7 +2,7 @@
     "properties": {
         "displayName": "Deny creation of resources without tags",
         "policyType": "Custom",
-        "mode": "All",
+        "mode": "Indexed",
         "description": "This policy denies the creation of resources that do not have any tags assigned.",
         "metadata": {
             "version": "1.0.0",
@@ -11,13 +11,10 @@
         "parameters": {},
         "policyRule": {
             "if": {
-                "allOf": [
-                    {
-                        "field": "tags",
-                        "exists": false
-                    }
-                ]
-            },
+                "field": "tags",
+                "exists": false
+                }         
+            ,
             "then": {
                 "effect": "deny"
             }
