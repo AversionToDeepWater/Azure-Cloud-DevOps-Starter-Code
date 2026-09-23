@@ -1,2 +1,25 @@
 .DS_Store
 .DS_Store?
+
+# Terraform working directory
+.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.*
+
+# Terraform plan files
+*.plan
+
+# Crash logs
+crash.log
+
+# Variable files containing secrets
+*.tfvars
+*.tfvars.json
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
