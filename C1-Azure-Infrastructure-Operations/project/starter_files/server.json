@@ -9,8 +9,8 @@
 		"type": "azure-arm",
 
 		"use_azure_cli_auth": true,
-		
-		"managed_image_resource_group_name": "packer-images-rg",
+
+		"managed_image_resource_group_name": "Azuredevops",
 		"managed_image_name": "ubuntu1804-image",
 
 		"os_type": "Linux",
@@ -18,7 +18,7 @@
 		"image_offer": "UbuntuServer",
 		"image_sku": "18.04-LTS",
 
-		"location": "East US",
+		"location": "southcentralus",
 		"vm_size": "Standard_B1s"
 	}],
 	"provisioners": [{
