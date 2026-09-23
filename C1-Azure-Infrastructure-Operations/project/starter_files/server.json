@@ -2,10 +2,29 @@
 	"variables": {
 		"client_id": "{{env `ARM_CLIENT_ID`}}",
 		"client_secret": "{{env `ARM_CLIENT_SECRET`}}",
-		"subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}"
+		"subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}",
+		"tenant_id": "{{env `ARM_TENANT_ID`}}"
 	},
 	"builders": [{
-		**YOUR CODE HERE**
+		"type": "azure-arm",
+
+		"use_azure_cli_auth": true,
+
+		"azure_tags": {
+			"Environment": "Lab",
+			"Project": "Udacity-Cloud-DevOps-Starter-Code"
+		},
+
+		"managed_image_resource_group_name": "Azuredevops",
+		"managed_image_name": "ubuntu1804-image",
+
+		"os_type": "Linux",
+		"image_publisher": "Canonical",
+		"image_offer": "UbuntuServer",
+		"image_sku": "18.04-LTS",
+
+		"location": "southcentralus",
+		"vm_size": "Standard_B1s"
 	}],
 	"provisioners": [{
 		"inline": [
