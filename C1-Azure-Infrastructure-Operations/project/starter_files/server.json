@@ -10,6 +10,11 @@
 
 		"use_azure_cli_auth": true,
 
+		"azure_tags": {
+			"Environment": "Lab",
+			"Project": "Udacity-Cloud-DevOps-Starter-Code"
+		},
+
 		"managed_image_resource_group_name": "Azuredevops",
 		"managed_image_name": "ubuntu1804-image",
 

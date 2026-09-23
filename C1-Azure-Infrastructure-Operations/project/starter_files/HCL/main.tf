@@ -10,7 +10,7 @@ data "azurerm_resource_group" "main" {
 # Packer-built image
 data "azurerm_image" "packer" {
   name                = "ubuntu1804-image"
-  resource_group_name = "packer-images-rg"
+  resource_group_name = "Azuredevops"
 }
 
 # Virtual Network
