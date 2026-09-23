@@ -2,16 +2,14 @@
 	"variables": {
 		"client_id": "{{env `ARM_CLIENT_ID`}}",
 		"client_secret": "{{env `ARM_CLIENT_SECRET`}}",
-		"subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}"
+		"subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}",
+		"tenant_id": "{{env `ARM_TENANT_ID`}}"
 	},
 	"builders": [{
 		"type": "azure-arm",
 
-		"client": "{{user 'client_id'}}",
-		"client_secret": "{{user 'client_secret'}}",
-		"subscription_id": "{{user `subscription_id`}}",
-		"tenant_id": "{{env `ARM_TENANT_ID`}}",
-
+		"use_azure_cli_auth": true,
+		
 		"managed_image_resource_group_name": "packer-images-rg",
 		"managed_image_name": "ubuntu1804-image",
 

@@ -34,6 +34,20 @@ resource "azurerm_network_security_group" "main" {
   name                = "${var.prefix}-nsg"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
+
+  security_rule {
+    name                       = "DenyInternetInbound"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Deny"
+    protocol                   = "*"
+    source_port_range          = "*"
+    destination_port_range     ="*"
+    source_address_prefix      = "Internet"
+    destination_address_prefix = "*"
+
+
+  }
 }
 
 # Associate NSG with Subnet
