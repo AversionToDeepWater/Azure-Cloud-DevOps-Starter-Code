@@ -8,8 +8,7 @@
 *.tfstate
 *.tfstate.*
 
-# Terraform plan files
-*.plan
+
 
 # Crash logs
 crash.log
