@@ -60,7 +60,7 @@ az policy assignment create `
 
 ### Build the Packer Image
 
-Initialize the Azure Packer plugin:
+Initialise the Azure Packer plugin:
 
 ```powershell
 packer init .
@@ -123,6 +123,58 @@ terraform destroy
 ## Customisation
 You can customise deployment by modifying the vars.tf file.
 
+The folloiwng variables can be updated
+
+### Prefix
+Resource naming prefix used when creating Azure resources
+Example
+```hcl
+prefix = "webapp"
+prefix = "dev"
+```
+
+### Location
+Default location
+```hcl
+location = "East US"
+```
+
+Other valid locations 
+```hcl
+location = "West Europe"
+location = "UK South"
+location  = "South Central US"
+```
+
+### Resource Group Name
+The name of an exisiting Azure Resource Group where the resources will be deployed.
+
+Example 
+```hcl
+resource_group_name = "Azuredevops"
+```
+
+### Admin Username 
+The administator username for the virtual machines 
+
+Example values
+```hcl
+admin_username = "azureuser"
+admin_username = "vmadmin"
+```
+Note: Azure reserves certain usernames such as admin, administrator and root. Thherefore, those cannot be used.
+
+### Admin Password 
+The administrator password for the virtual machines.
+Note: The password must meet Azure VM password complexity requirements.
+
+### VM Count 
+The number of virtual machines to deploy
+
+Default value 
+```hcl
+vm_count = 2 
+```
 
 
 ## Output
