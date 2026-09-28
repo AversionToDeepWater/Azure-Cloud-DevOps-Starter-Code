@@ -35,9 +35,50 @@ resource "azurerm_network_security_group" "main" {
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
 
+  # Allow inbound traffic from virtual network
   security_rule {
-    name                       = "DenyInternetInbound"
-    priority                   = 100
+    name                       = "Allow-VNet-Inbound"
+    priority                   = 200
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "*"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "VirtualNetwork"
+    destination_address_prefix = "*"
+  }
+
+  # Allow outbound traffic for virtual network 
+  security_rule {
+    name                       = "Allow-VNet-Outbound"
+    priority                   = 201
+    direction                  = "Outbound"
+    access                     = "Allow" 
+    protocol                   = "*"
+    source_port_range          = "*"
+    destination_port_range     = "*"
+    source_address_prefix      = "*"
+    destination_address_prefix = "VirtualNetwork"
+
+  }
+
+# Allow load balancer traffic to reach HTTP port 80 on VMs 
+  security_rule{
+    name = "Allow-HTTP-From-LoadBalancer-To-VMs"
+    priority = 202 
+    direction = "Inbound"
+    access = "Allow"
+    protocol = "Tcp"
+    source_port_range = "*"
+    destination_port_range = "80"
+    source_address_prefix = "AzureLoadBalancer"
+    destination_address_prefix = "*"
+  }
+
+# Deny all other traffic from the internet 
+  security_rule {
+    name                       = "Deny-Internet-Inbound"
+    priority                   = 400
     direction                  = "Inbound"
     access                     = "Deny"
     protocol                   = "*"
@@ -46,8 +87,8 @@ resource "azurerm_network_security_group" "main" {
     source_address_prefix      = "Internet"
     destination_address_prefix = "*"
 
-
   }
+
 }
 
 # Associate NSG with Subnet
