@@ -23,7 +23,7 @@
 		"image_offer": "UbuntuServer",
 		"image_sku": "18.04-LTS",
 
-		"location": "southcentralus",
+		"location": "eastus",
 		"vm_size": "Standard_B1s"
 	}],
 	"provisioners": [{
