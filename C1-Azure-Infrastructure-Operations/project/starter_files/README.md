@@ -179,7 +179,8 @@ vm_count = 2
 
 ## Output
 ### Policy
-![alt text](<Screenshot 2026-09-23 105537.png>)
+![alt text](image-2.png)
+![alt text](image-3.png)
 
 ### Packer image
 ![alt text](image-1.png)
