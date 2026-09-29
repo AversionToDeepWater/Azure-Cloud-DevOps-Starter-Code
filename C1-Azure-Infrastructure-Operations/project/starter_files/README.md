@@ -186,7 +186,8 @@ vm_count = 2
 
 ### Infrastructure with Terraform 
 
-![alt text](image-2.png)
+#### Include updated Terraform apply!!!!
+
 
 ![alt text](image-3.png)
 
