@@ -10,8 +10,8 @@ data "azurerm_resource_group" "main" {
 # Tags to be used by resources
 locals {
   project_tags {
-    Project = "udacity-cloud-lab"
-    Assignment = "web-server-deployment"
+    Environment = "Lab"
+    Project = "Udacity-Cloud-DevOps-Starter-Code"
   }
 }
 
