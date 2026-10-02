@@ -133,17 +133,12 @@ prefix = "webapp"
 prefix = "dev"
 ```
 
-### Location
-Default location
-```hcl
-location = "East US"
-```
+### Packer Image Name 
+The name of your backer image
 
-Other valid locations 
+Example
 ```hcl
-location = "West Europe"
-location = "UK South"
-location  = "South Central US"
+image = "ubuntu1804-image"
 ```
 
 ### Resource Group Name
