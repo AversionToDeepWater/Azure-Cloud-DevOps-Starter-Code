@@ -187,8 +187,11 @@ Table format
 ![alt text](image-1.png)
 
 ### Packer image
+Output
+![alt text](image-2.png)
 
-
+Output in table form 
+![alt text](image-3.png)
 ### Infrastructure with Terraform 
 
 #### Deploy infrastructure with terraform
