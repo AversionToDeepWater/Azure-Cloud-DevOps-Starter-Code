@@ -189,9 +189,23 @@ Output in table form
 ![alt text](image-3.png)
 ### Infrastructure with Terraform 
 
+```hcl
+terraform apply solution.plan | Tee-Object -FilePath apply.txt
+```
+
+#### Terminal output also saved in apply.txt
+![alt text](image-4.png)
+![alt text](image-5.png)
+
 #### Deploy infrastructure with terraform
+![alt text](image-6.png)
 
 #### Destory all resources
+```hcl
+terraform destroy 2>&1 | Tee-Object -FilePath destroy.txt
+```
+Terminal output saved in destroy.txt
 
 *** 
 ### NSG Rules
+![alt text](image-7.png)
