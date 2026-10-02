@@ -7,10 +7,18 @@ data "azurerm_resource_group" "main" {
   name = var.resource_group_name
 }
 
+# Tags to be used by resources
+locals {
+  project_tags = {
+    Environment = "Lab"
+    Project = "Udacity-Cloud-DevOps-Starter-Code"
+  }
+}
+
 # Packer-built image
 data "azurerm_image" "packer" {
-  name                = "ubuntu1804-image"
-  resource_group_name = "Azuredevops"
+  name                = "${var.image_name}"
+  resource_group_name = "${var.resource_group_name}"
 }
 
 # Virtual Network
@@ -19,6 +27,8 @@ resource "azurerm_virtual_network" "main" {
   address_space       = ["10.0.0.0/22"]
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
+
+  tags = local.project_tags
 }
 
 # Subnet
@@ -34,6 +44,8 @@ resource "azurerm_network_security_group" "main" {
   name                = "${var.prefix}-nsg"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
+
+  tags = local.project_tags
 
   # Allow inbound traffic from virtual network
   security_rule {
@@ -104,6 +116,8 @@ resource "azurerm_public_ip" "main" {
   resource_group_name = data.azurerm_resource_group.main.name
 
   allocation_method = "Static"
+
+  tags = local.project_tags
 }
 
 # Load Balancer
@@ -111,6 +125,8 @@ resource "azurerm_lb" "main" {
   name                = "${var.prefix}-lb"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
+
+  tags = local.project_tags
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"
@@ -131,6 +147,8 @@ resource "azurerm_availability_set" "main" {
   resource_group_name = data.azurerm_resource_group.main.name
 
   managed = true
+
+  tags = local.project_tags
 }
 
 # Network Interfaces
@@ -140,6 +158,8 @@ resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic-${count.index}"
   location            = data.azurerm_resource_group.main.location
   resource_group_name = data.azurerm_resource_group.main.name
+
+  tags = local.project_tags
 
   ip_configuration {
     name                          = "internal"
@@ -164,6 +184,8 @@ resource "azurerm_linux_virtual_machine" "main" {
   name                = "${var.prefix}-vm-${count.index}"
   resource_group_name = data.azurerm_resource_group.main.name
   location            = data.azurerm_resource_group.main.location
+
+  tags = local.project_tags
 
   size                            = "Standard_D2s_v3"
   admin_username                  = var.admin_username

@@ -2,9 +2,8 @@ variable "prefix" {
   description = "The prefix which should be used for all resources in this example"
 }
 
-variable "location" {
-  description = "The Azure Region in which all resources in this example should be created."
-  default     = "southcentralus"
+variable "image_name" {
+  description = "The name of your Packer image."
 }
 
 variable "resource_group_name" {

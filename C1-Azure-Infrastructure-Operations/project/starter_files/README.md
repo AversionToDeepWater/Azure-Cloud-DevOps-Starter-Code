@@ -45,7 +45,7 @@ az policy definition create `
   --name ResourceTagPolicy `
   --display-name "Deny creation of resources without tags" `
   --mode Indexed `
-  --rules .\policy-rule.json
+  --rules .\tagging-policy.json
 ```
 
 Assign the policy:
@@ -133,17 +133,12 @@ prefix = "webapp"
 prefix = "dev"
 ```
 
-### Location
-Default location
-```hcl
-location = "East US"
-```
+### Packer Image Name 
+The name of your backer image
 
-Other valid locations 
+Example
 ```hcl
-location = "West Europe"
-location = "UK South"
-location  = "South Central US"
+image = "ubuntu1804-image"
 ```
 
 ### Resource Group Name
@@ -179,31 +174,38 @@ vm_count = 2
 
 ## Output
 ### Policy
-![alt text](image-2.png)
-![alt text](image-3.png)
+Output of az policy assignment list (before any other resources are created)
 
-### Packer image
+![alt text](image.png)
+
+Table format 
 ![alt text](image-1.png)
 
+### Packer image
+Output
+![alt text](image-2.png)
+
+Output in table form 
+![alt text](image-3.png)
 ### Infrastructure with Terraform 
 
-#### Deploy infrastructure with terraform
-![alt text](image-7.png)
+```hcl
+terraform apply solution.plan | Tee-Object -FilePath apply.txt
+```
 
-![alt text](image-8.png)
-
-
-![alt text](image-9.png)
-
+#### Terminal output also saved in apply.txt
+![alt text](image-4.png)
 ![alt text](image-5.png)
 
+#### Deploy infrastructure with terraform
 ![alt text](image-6.png)
 
 #### Destory all resources
-![alt text](image-11.png)
-
-![alt text](image-12.png)
+```hcl
+terraform destroy 2>&1 | Tee-Object -FilePath destroy.txt
+```
+Terminal output saved in destroy.txt
 
 *** 
 ### NSG Rules
-![alt text](image-10.png)
+![alt text](image-7.png)
