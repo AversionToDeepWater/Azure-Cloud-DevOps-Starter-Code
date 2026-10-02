@@ -17,8 +17,8 @@ locals {
 
 # Packer-built image
 data "azurerm_image" "packer" {
-  name                = "ubuntu1804-image"
-  resource_group_name = "Azuredevops"
+  name                = "${var.image_name}
+  resource_group_name = "${var.resource_group_name}"
 }
 
 # Virtual Network
