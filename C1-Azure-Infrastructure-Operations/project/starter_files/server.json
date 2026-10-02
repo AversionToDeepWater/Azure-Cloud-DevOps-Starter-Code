@@ -24,7 +24,7 @@
 		"image_offer": "UbuntuServer",
 		"image_sku": "18.04-LTS",
 
-		"location": "{{user `location`}}",
+		"location": "westeurope",
 		"vm_size": "Standard_B1s"
 	}],
 	"provisioners": [{
